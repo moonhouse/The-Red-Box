@@ -1,0 +1,12 @@
+Arduino-based display of Linkpulse statistics
+=============================================
+
+Den röda lådan (The Red box) was a hack project devised by Per Åström (TV4) and David Hall during the hack event Bonnier Hackday that was arranged for the companies within the Bonnier media conglomerate.
+
+The idea was to prominently display the click activity on TV4's sites by showing statistics as provided by the tool Linkpulse. 
+
+Description in Swedish can be read on http://strm.se/2010/05/06/tanket-inuti-den-roda-ladan/ 
+
+The setup is based on the Arduino Duemilanove board, the Ethernet shield and a few of Velleman's RS-232-controlled LED displays. The XML information as provided by Linkpulse is parsed and then sent to the LED displays. Change of site to show information for is done by turning the potentiometer.
+
+The code for the Arduino is contained in this project. I will try to fork the code for communicating with Velleman's displays to its own project and add schematics over the additional hardware.

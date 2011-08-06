@@ -5,7 +5,6 @@
 byte mac[] = { 
   0xDE, 0xAD, 0xBE, 0xEF, 0xFE, 0xED };
 byte server[] = {
-  //  77,238,187,12 }; // pipes.yahoo.com
   87,238,48,70 }; // lp1.linkpulse.com
 char* channelIDs[]={
   "69fc88066df1d55f","7e26f1a83f4c072f","7aab030d8f1f4c81","69fc88066df1d55f"};  
@@ -93,11 +92,9 @@ long getStateclicks(int channel) {
   long time = 0;
   boolean ok = false;
   if (client.connect()) {
-    //client.println("GET /pipes/pipe.run?_id=7de8d378d051b791c08bee5b949eab7c&_render=rss HTTP/1.0");  // google weather for London
-    //client.println("Host: pipes.yahoo.com");
     client.print("GET /lpFeeder/d9c853a68e27d39c/");
     client.print(channelIDs[channel]);
-    client.println(" HTTP/1.0");  // google weather for London
+    client.println(" HTTP/1.0");  
     client.println("Host: lp1.linkpulse.com");
     client.println();
   } 
@@ -106,7 +103,6 @@ long getStateclicks(int channel) {
   } 
   if (client.connected()) {
     time = millis();
-    // get the feild for temperature in fahrenheit (use field "<temp_c data=\"" for Celcius)
     if(finder.find("<description>stateclicks: ") )
     {      
       stateclicks = finder.getValue();
@@ -145,7 +141,6 @@ int getChannelReading() {
   channel = map(analogRead(0),0,1023,0,4);    // read the value from the sensor
   if(channel==4)
     channel=3; 
-  //Serial.println(analogRead(0));
   return channel;
 }
 
@@ -218,28 +213,3 @@ void loop()
       waitTill[channel] = millis() + 30000;
   }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
